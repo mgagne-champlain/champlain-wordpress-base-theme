@@ -1,0 +1,1 @@
+{"version":3,"sources":["main.scss"],"names":[],"mappings":"AAEA,KACE,WAAA,QADF,OAGI,MAAA","file":"main.css","sourcesContent":["$primary-color:#6c63ff;\n\nbody{\n  background: $primary-color;\n  p{\n    color: #eee;\n  }\n}"]}
