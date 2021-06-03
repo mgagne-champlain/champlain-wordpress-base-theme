@@ -5,15 +5,21 @@ add_action( 'wp_enqueue_scripts', function(){
 });
 
 add_action('customize_register',function($wp_customize){
-    $wp_customize->add_section( 'cc_view_general_layout_options' , [
-        'title'      => '👓 SASS Test',
-        'priority'   => 10,
-    ] );
+
+    // Hide this section if npm/node_modules not detected
+    if(!empty(shell_exec("which npm")) && is_dir(get_template_directory().'/node_modules')){
+        $wp_customize->add_section( 'cc_view_general_layout_options' , [
+            'title'      => '👓 Sass Customization',
+            'priority'   => 10,
+        ] );
+    }
+
     $wp_customize->add_setting(
         'cc_sass_background_color',
         [
             'default'           => '#fff',
             'type'              => 'theme_mod',
+            'transport'         => 'postMessage', //no live refresh
             'capability'        => 'edit_theme_options',
         ]
     );
@@ -28,11 +34,13 @@ add_action('customize_register',function($wp_customize){
             ]
         )
     );
+    
     $wp_customize->add_setting(
         'cc_sass_foreground_color',
         [
             'default'           => '#000',
             'type'              => 'theme_mod',
+            'transport'         => 'postMessage', //no live refresh
             'capability'        => 'edit_theme_options',
         ]
     );
