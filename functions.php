@@ -1,10 +1,11 @@
 <?php
 add_action( 'wp_enqueue_scripts', function(){
-    $css_version = md5(filemtime( get_template_directory() . '/src/css/main.css' ));
-    wp_enqueue_style( 'understrap-styles', get_template_directory_uri() . '/src/css/main.css', [], $css_version );
+    $css_version = md5(filemtime( get_template_directory() . '/build/css/main.css' ));
+    wp_enqueue_style( 'cc-style', get_theme_file_uri('/build/css/main.min.css'), [], $css_version );
+    wp_enqueue_script( 'cc-js', get_theme_file_uri('/build/js/scripts.min.js'), ['jquery'], null, true );
 });
 
-add_action('customize_register',function($wp_customize){
+add_action('customize_register', function($wp_customize){
 
     // Hide this section if npm/node_modules not detected
     if(!empty(shell_exec("which npm")) && is_dir(get_template_directory().'/node_modules')){
@@ -65,12 +66,11 @@ add_action('customize_save_after', function(){
     ];
     
     $content = "";
-
     foreach($sass_theme_mods as $mod => $sass_varname){
         $value = get_theme_mod($mod);
         $content .= "$$sass_varname: $value;\r\n";
     }
 
     file_put_contents(get_template_directory() . '/src/scss/_variable_customizer.scss', $content);
-    shell_exec('cd ' . get_template_directory() . ' && npm run build --no-update-notifier');
+    shell_exec('cd ' . get_template_directory() . ' && gulp sass');
 });

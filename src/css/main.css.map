@@ -1,1 +1,0 @@
-{"version":3,"sources":["_general.scss"],"names":[],"mappings":"AAAA,KACI,WAAA,IADJ,OAGM,MAAA","file":"main.css","sourcesContent":["body{\n    background: $background-color;\n    p{\n      color: $foreground-color;\n    }\n  }"]}

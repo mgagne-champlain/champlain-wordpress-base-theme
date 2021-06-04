@@ -1,10 +1,12 @@
 {
   "name": "champlain-wordpress-base-theme",
   "version": "1.0.0",
-  "description": "",
+  "description": "Champlain College Blog Network Base Theme (View Theme)",
   "scripts": {
-    "build": "gulp sass",
-    "watch": "gulp watch"
+    "build": "gulp build",
+    "sass": "gulp sass",
+    "watch": "gulp watch",
+    "scripts": "gulp scripts"
   },
   "repository": {
     "type": "git",
@@ -20,8 +22,11 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-clean-css": "^4.3.0",
+    "gulp-include": "^2.4.1",
     "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
     "gulp-sass": "^4.1.0",
-    "gulp-sourcemaps": "^3.0.0"
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
