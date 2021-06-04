@@ -1,10 +1,8 @@
 node_modules
+build
 .svn
 .cvs
 *.bak
 *.swp
 .idea/
 .vscode/sftp.json
-build/css
-src/scss/_variable_customizer.scss
-
