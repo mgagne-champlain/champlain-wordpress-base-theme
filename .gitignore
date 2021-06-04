@@ -5,3 +5,6 @@ node_modules
 *.swp
 .idea/
 .vscode/sftp.json
+build/css
+src/scss/_variable_customizer.scss
+
